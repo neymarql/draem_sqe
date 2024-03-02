@@ -20,7 +20,16 @@ to download the MVTec and the DTD datasets to the **datasets** folder in the pro
 ```
 ./scripts/download_dataset.sh
 ```
+if downlaod_dataset.sh or pretrained.sh scripts  throw "permission denies" error then use these commands
 
+```
+chmod +x ./scripts/download_dataset.sh
+```
+now download the dataset again
+
+```
+./scripts/download_dataset.sh
+```
 
 ## Training
 Pass the folder containing the training dataset to the **train_DRAEM.py** script as the --data_path argument and the
