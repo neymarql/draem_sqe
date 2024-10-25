@@ -20,7 +20,16 @@ to download the MVTec and the DTD datasets to the **datasets** folder in the pro
 ```
 ./scripts/download_dataset.sh
 ```
+if downlaod_dataset.sh or pretrained.sh scripts  throw "permission denies" error then use these commands
 
+```
+chmod +x ./scripts/download_dataset.sh
+```
+now download the dataset again
+
+```
+./scripts/download_dataset.sh
+```
 
 ## Training
 Pass the folder containing the training dataset to the **train_DRAEM.py** script as the --data_path argument and the
@@ -50,5 +59,19 @@ with pretrained models can be run with:
 ```
 python test_DRAEM.py --gpu_id 0 --base_model_name "DRAEM_seg_large_ae_large_0.0001_800_bs8" --data_path ./datasets/mvtec/ --checkpoint_path ./checkpoints/DRAEM_checkpoints/
 ```
+
+## Inference
+For Inference Dataset loader was modified to load only two images per class and Heatmap of Anomaly would be predicted by the model and displayed using Matplotlib.
+
+The inference script requires the --gpu_id arguments, the name of the checkpoint files (--base_model_name) for trained models, the 
+location of the MVTec anomaly detection dataset (--data_path) and the folder where the checkpoint files are located (--checkpoint_path)
+with pretrained models can be run with:
+
+```
+python visualize_DRAEM.py --gpu_id 0 --base_model_name "DRAEM_seg_large_ae_large_0.0001_800_bs8" --data_path ./datasets/mvtec/ --checkpoint_path ./checkpoints/DRAEM_checkpoints/
+```
+## Inference Results
+![Screenshot](images/result_1.PNG)
+![Screenshot](images/result_2.PNG)
 
 
